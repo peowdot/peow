@@ -7,4 +7,8 @@ import vitest from "ultracite/oxlint/vitest";
 export default defineConfig({
   extends: [core, react, tanstack, vitest],
   ignorePatterns: core.ignorePatterns,
+  rules: {
+    "func-style": ["allow", "declaration"],
+    "no-use-before-define": ["allow"],
+  },
 });

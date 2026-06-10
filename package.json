@@ -9,7 +9,11 @@
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "lefthook": "^2.1.9",
-    "turbo": "^2.9.17"
+    "turbo": "^2.9.17",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "packageManager": "pnpm@10.34.1"
 }

@@ -5,14 +5,16 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "clean": "turbo clean && rimraf .turbo node_modules",
+    "clean": "turbo clean && rimraf node_modules .turbo .fallow",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "fallow": "fallow"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
+    "fallow": "^2.91.0",
     "lefthook": "^2.1.9",
     "oxfmt": "^0.54.0",
     "oxlint": "^1.69.0",

@@ -11,3 +11,7 @@ allowBuilds:
 
 catalog:
   typescript: ^5.9.3
+
+catalogs:
+  orpc:
+    "@orpc/server": 1.14.5

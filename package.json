@@ -8,6 +8,7 @@
     "clean": "turbo clean && rimraf node_modules .turbo .fallow",
     "check": "ultracite check",
     "fix": "ultracite fix",
+    "build": "turbo build",
     "prepare": "lefthook install",
     "fallow": "fallow"
   },

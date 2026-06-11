@@ -1,0 +1,23 @@
+{
+  "name": "@repo/telemetry",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./evlog": "./src/evlog/index.ts",
+    "./evlog/orpc": "./src/evlog/orpc.ts",
+    "./evlog/fastify": "./src/evlog/fastify.ts"
+  },
+  "scripts": {
+    "clean": "rimraf node_modules .turbo",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "evlog": "^2.18.1",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

@@ -10,7 +10,10 @@ allowBuilds:
   workerd: true
 
 catalog:
+  "server-only": 0.0.1
+  "@types/node": ^24.12.4
   typescript: ^5.9.3
+  zod: 4.4.3
 
 catalogs:
   orpc:

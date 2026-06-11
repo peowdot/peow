@@ -4,12 +4,15 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf node_modules .turbo .dist",
-    "dev": "tsdown  ./src/main.ts --watch",
+    "dev": "tsdown ./src/main.ts --watch",
     "start": "node dist/main.mjs",
     "build": "tsdown"
   },
   "dependencies": {
+    "@fastify/cors": "^11.2.0",
     "@orpc/server": "catalog:orpc",
+    "@repo/rpc": "workspace:*",
+    "@repo/telemetry": "workspace:*",
     "fastify": "^5.8.5"
   },
   "devDependencies": {

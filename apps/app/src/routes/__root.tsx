@@ -3,6 +3,7 @@ import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import "../styles.css";
+import { Providers } from "@/providers";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -11,18 +12,20 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <Outlet />
-      <TanStackDevtools
-        config={{
-          position: "bottom-right",
-        }}
-        plugins={[
-          {
-            name: "TanStack Router",
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-        ]}
-      />
+      <Providers>
+        <Outlet />
+        <TanStackDevtools
+          config={{
+            position: "bottom-right",
+          }}
+          plugins={[
+            {
+              name: "TanStack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
+      </Providers>
     </>
   );
 }

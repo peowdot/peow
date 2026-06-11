@@ -6,9 +6,18 @@ settings:
 
 catalogs:
   default:
+    '@types/node':
+      specifier: ^24.12.4
+      version: 24.13.1
+    server-only:
+      specifier: 0.0.1
+      version: 0.0.1
     typescript:
       specifier: ^5.9.3
       version: 5.9.3
+    zod:
+      specifier: 4.4.3
+      version: 4.4.3
   orpc:
     '@orpc/server':
       specifier: 1.14.5
@@ -51,9 +60,18 @@ importers:
 
   apps/api:
     dependencies:
+      '@fastify/cors':
+        specifier: ^11.2.0
+        version: 11.2.0
       '@orpc/server':
         specifier: catalog:orpc
         version: 1.14.5(fastify@5.8.5)(ws@8.21.0)
+      '@repo/rpc':
+        specifier: workspace:*
+        version: link:../../packages/rpc
+      '@repo/telemetry':
+        specifier: workspace:*
+        version: link:../../packages/telemetry
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
@@ -70,12 +88,24 @@ importers:
 
   apps/app:
     dependencies:
+      '@orpc/client':
+        specifier: ^1.14.5
+        version: 1.14.5
+      '@orpc/tanstack-query':
+        specifier: ^1.14.5
+        version: 1.14.5(@orpc/client@1.14.5)(@tanstack/query-core@5.101.0)
+      '@repo/rpc':
+        specifier: workspace:*
+        version: link:../../packages/rpc
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.3.0(vite@8.0.16(@types/node@22.19.20)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0))
       '@tanstack/react-devtools':
         specifier: latest
         version: 0.10.5(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(csstype@3.2.3)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(solid-js@1.9.13)
+      '@tanstack/react-query':
+        specifier: ^5.101.0
+        version: 5.101.0(react@19.2.7)
       '@tanstack/react-router':
         specifier: latest
         version: 1.170.15(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -219,6 +249,47 @@ importers:
       wrangler:
         specifier: ^4.70.0
         version: 4.99.0
+
+  packages/rpc:
+    dependencies:
+      '@orpc/server':
+        specifier: catalog:orpc
+        version: 1.14.5(fastify@5.8.5)(ws@8.21.0)
+      '@repo/telemetry':
+        specifier: workspace:*
+        version: link:../telemetry
+      server-only:
+        specifier: 'catalog:'
+        version: 0.0.1
+      zod:
+        specifier: 'catalog:'
+        version: 4.4.3
+    devDependencies:
+      '@repo/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/tsconfig
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.13.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/telemetry:
+    dependencies:
+      evlog:
+        specifier: ^2.18.1
+        version: 2.18.1(@orpc/server@1.14.5(fastify@5.8.5)(ws@8.21.0))(@tanstack/start-client-core@1.170.12)(fastify@5.8.5)(react@19.2.7)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0))
+      zod:
+        specifier: 'catalog:'
+        version: 4.4.3
+    devDependencies:
+      '@repo/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/tsconfig
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
 
   tooling/tsconfig: {}
 
@@ -896,6 +967,9 @@ packages:
   '@fastify/ajv-compiler@4.0.5':
     resolution: {integrity: sha512-KoWKW+MhvfTRWL4qrhUwAAZoaChluo0m0vbiJlGMt2GXvL4LVPQEjt8kSpHI3IBq5Rez8fg+XeH3cneztq+C7A==}
 
+  '@fastify/cors@11.2.0':
+    resolution: {integrity: sha512-LbLHBuSAdGdSFZYTLVA3+Ch2t+sA6nq3Ejc6XLAKiQ6ViS2qFnvicpj0htsx03FyYeLs04HfRNBsz/a8SvbcUw==}
+
   '@fastify/error@4.2.0':
     resolution: {integrity: sha512-RSo3sVDXfHskiBZKBPRgnQTtIqpi/7zhJOEmAxCiBcM7d0uwdGdxLlsCaLzGs8v8NnxIRlfG0N51p5yFaOentQ==}
 
@@ -1155,6 +1229,12 @@ packages:
 
   '@orpc/standard-server@1.14.5':
     resolution: {integrity: sha512-bCd1BkShxknFjIDixUEjOj3fvP4hxN0IIV/hvTdtk6sdWApadBjw3UuK3iprkECgoBt/31zTOKwgHB/wnnUfhw==}
+
+  '@orpc/tanstack-query@1.14.5':
+    resolution: {integrity: sha512-EFZtCrI7Y+H7sg3C2asvju8wtz4g/sdfWvl2XWC+O9qo0xmjCLLPx1t3mohBY45icTiLi+hMDV1fxINvmBHSEg==}
+    peerDependencies:
+      '@orpc/client': 1.14.5
+      '@tanstack/query-core': '>=5.80.2'
 
   '@oxc-parser/binding-android-arm-eabi@0.120.0':
     resolution: {integrity: sha512-WU3qtINx802wOl8RxAF1v0VvmC2O4D9M8Sv486nLeQ7iPHVmncYZrtBhB4SYyX+XZxj2PNnCcN+PW21jHgiOxg==}
@@ -2188,6 +2268,9 @@ packages:
   '@types/node@22.19.20':
     resolution: {integrity: sha512-6tELRwSDYWW9EdZhbeZmYGZ1/7Djkt+Ah3/ScEYT9cDord7UJzasR/4D3VONg9tQI5CDp+/CZC1AXj2pCFOvpw==}
 
+  '@types/node@24.13.1':
+    resolution: {integrity: sha512-RSpUJGmvsJ1ZeBehQZFhIdpsz+bIpES0nIQXko4Ybq+N+kX6XvOq3Jo+iJ82FWLdblFq85AsMikd3m35jgezYg==}
+
   '@types/node@25.9.2':
     resolution: {integrity: sha512-G05zqtJhcDLb8uslf5EjCxXg9G1KQxiV8OS0R26IC//Eoyitzqe8z37I7cqvnZlrlSfgocQRfSn/AHBZJJFyGw==}
 
@@ -2557,6 +2640,62 @@ packages:
   estree-walker@3.0.3:
     resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
 
+  evlog@2.18.1:
+    resolution: {integrity: sha512-uP7NNcmgQST0VdJ5c+gm4uBOOQDc/lGDWwH6aRS2H4C6mu4Hm7N8bCi6cSKIz8+If6pD2uA5EgPuhvI7OH+SHA==}
+    peerDependencies:
+      '@nestjs/common': '>=11.1.19'
+      '@nuxt/kit': ^4.4.2
+      '@orpc/server': '>=1.14.0'
+      '@tanstack/start-client-core': ^1.167.20
+      ai: '>=6.0.168'
+      elysia: '>=1.4.28'
+      express: '>=5.2.1'
+      fastify: '>=5.8.5'
+      h3: ^1.15.11
+      hono: '>=4.11.0'
+      next: '>=16.2.4'
+      nitro: ^3.0.260311-beta
+      nitropack: ^2.13.3
+      ofetch: ^1.5.1
+      react: '>=19.2.5'
+      react-router: '>=7.14.2'
+      vite: ^7.0.0 || ^8.0.0
+    peerDependenciesMeta:
+      '@nestjs/common':
+        optional: true
+      '@nuxt/kit':
+        optional: true
+      '@orpc/server':
+        optional: true
+      '@tanstack/start-client-core':
+        optional: true
+      ai:
+        optional: true
+      elysia:
+        optional: true
+      express:
+        optional: true
+      fastify:
+        optional: true
+      h3:
+        optional: true
+      hono:
+        optional: true
+      next:
+        optional: true
+      nitro:
+        optional: true
+      nitropack:
+        optional: true
+      ofetch:
+        optional: true
+      react:
+        optional: true
+      react-router:
+        optional: true
+      vite:
+        optional: true
+
   expect-type@1.3.0:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
@@ -2592,6 +2731,9 @@ packages:
 
   fast-wrap-ansi@0.2.2:
     resolution: {integrity: sha512-7F2Fl+TjRSenLqlU3UjSH0iyqopqoZIu7eZVpEirP2g1GtWa2G/ecEmBdgz31+Mxr+ELclgg6sokpSFIQiZ02Q==}
+
+  fastify-plugin@5.1.0:
+    resolution: {integrity: sha512-FAIDA8eovSt5qcDgcBvDuX/v0Cjz0ohGhENZ/wpc3y+oZCY2afZ9Baqql3g/lC+OHRnciQol4ww7tuthOb9idw==}
 
   fastify@5.8.5:
     resolution: {integrity: sha512-Yqptv59pQzPgQUSIm87hMqHJmdkb1+GPxdE6vW6FRyVE9G86mt7rOghitiU4JHRaTyDUk9pfeKmDeu70lAwM4Q==}
@@ -3216,6 +3358,9 @@ packages:
     resolution: {integrity: sha512-46uFvgrXTVxZcUorgSSRZ4y+ieqLLQRMlG4bnCZKW3qI6BZm7Rg4ntMW4p1mILEEBZWrFlcpp0AyIIlM6jD9iw==}
     engines: {node: '>=10'}
 
+  server-only@0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
+
   set-cookie-parser@2.7.2:
     resolution: {integrity: sha512-oeM1lpU/UvhTxw+g3cIfxXHyJRc/uidd3yK1P242gzHds0udQBYzs3y8j4gCCW+ZJ7ad0yctld8RYO+bdurlvw==}
 
@@ -3430,6 +3575,9 @@ packages:
 
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
+
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
   undici-types@7.24.6:
     resolution: {integrity: sha512-WRNW+sJgj5OBN4/0JpHFqtqzhpbnV0GuB+OozA9gCL7a993SmU+1JBZCzLNxYsbMfIeDL+lTsphD5jN5N+n0zg==}
@@ -4238,6 +4386,11 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       fast-uri: 3.1.2
 
+  '@fastify/cors@11.2.0':
+    dependencies:
+      fastify-plugin: 5.1.0
+      toad-cache: 3.7.1
+
   '@fastify/error@4.2.0': {}
 
   '@fastify/fast-json-stringify-compiler@5.0.3':
@@ -4494,6 +4647,14 @@ snapshots:
   '@orpc/standard-server@1.14.5':
     dependencies:
       '@orpc/shared': 1.14.5
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+
+  '@orpc/tanstack-query@1.14.5(@orpc/client@1.14.5)(@tanstack/query-core@5.101.0)':
+    dependencies:
+      '@orpc/client': 1.14.5
+      '@orpc/shared': 1.14.5
+      '@tanstack/query-core': 5.101.0
     transitivePeerDependencies:
       - '@opentelemetry/api'
 
@@ -5287,6 +5448,10 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/node@24.13.1':
+    dependencies:
+      undici-types: 7.18.2
+
   '@types/node@25.9.2':
     dependencies:
       undici-types: 7.24.6
@@ -5655,6 +5820,14 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.9
 
+  evlog@2.18.1(@orpc/server@1.14.5(fastify@5.8.5)(ws@8.21.0))(@tanstack/start-client-core@1.170.12)(fastify@5.8.5)(react@19.2.7)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0)):
+    optionalDependencies:
+      '@orpc/server': 1.14.5(fastify@5.8.5)(ws@8.21.0)
+      '@tanstack/start-client-core': 1.170.12
+      fastify: 5.8.5
+      react: 19.2.7
+      vite: 8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0)
+
   expect-type@1.3.0: {}
 
   exsolve@1.0.8: {}
@@ -5700,6 +5873,8 @@ snapshots:
   fast-wrap-ansi@0.2.2:
     dependencies:
       fast-string-width: 3.0.2
+
+  fastify-plugin@5.1.0: {}
 
   fastify@5.8.5:
     dependencies:
@@ -6315,6 +6490,8 @@ snapshots:
 
   seroval@1.5.4: {}
 
+  server-only@0.0.1: {}
+
   set-cookie-parser@2.7.2: {}
 
   sharp@0.34.5:
@@ -6524,6 +6701,8 @@ snapshots:
 
   undici-types@6.21.0: {}
 
+  undici-types@7.18.2: {}
+
   undici-types@7.24.6: {}
 
   undici@7.24.8: {}
@@ -6566,6 +6745,22 @@ snapshots:
       jiti: 2.7.0
       tsx: 4.22.4
       yaml: 2.9.0
+
+  vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0):
+    dependencies:
+      lightningcss: 1.32.0
+      picomatch: 4.0.4
+      postcss: 8.5.15
+      rolldown: 1.0.3
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      '@types/node': 25.9.2
+      esbuild: 0.28.0
+      fsevents: 2.3.3
+      jiti: 2.7.0
+      tsx: 4.22.4
+      yaml: 2.9.0
+    optional: true
 
   vitefu@1.1.3(vite@8.0.16(@types/node@22.19.20)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0)):
     optionalDependencies:

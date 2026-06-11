@@ -7,7 +7,8 @@
   },
   "scripts": {
     "clean": "rimraf node_modules .wrangler .tanstack .turbo",
-    "dev": "vite dev --port 3000",
+    "dev": "portless",
+    "dev:app": "vite dev",
     "generate-routes": "tsr generate",
     "build": "vite build",
     "preview": "vite preview",
@@ -43,5 +44,9 @@
     "vite": "^8.0.0",
     "vitest": "^4.1.5",
     "wrangler": "^4.70.0"
+  },
+  "portless": {
+    "name": "local.site.peow",
+    "script": "dev:app"
   }
 }

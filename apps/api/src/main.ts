@@ -11,7 +11,7 @@ const main = async () => {
 
   await app.register(cors, {
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "https://local.app.peow.id",
   });
 
   await app.register(evlog);
@@ -23,6 +23,8 @@ const main = async () => {
     // And let oRPC parse the body manually by passing `undefined`
     done(null);
   });
+
+  app.get("/", (_req, res) => res.send("PEOW API"));
 
   app.all("/api/rpc/*", async (req, reply) => {
     const headers = new Headers(req.headers as Record<string, string>);
@@ -47,6 +49,6 @@ const main = async () => {
 const app = await main();
 
 app
-  .listen({ port: 3003 })
+  .listen({ port: Number(process.env.PORT) })
   // oxlint-disable-next-line promise/prefer-await-to-then
-  .then(() => console.log("Server running on http://localhost:3003"));
+  .then(() => console.log(`Server running on https://local.api.peow.id`));

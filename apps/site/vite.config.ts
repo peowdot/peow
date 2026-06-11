@@ -14,6 +14,11 @@ const config = defineConfig({
     viteReact(),
   ],
   resolve: { tsconfigPaths: true },
+  server: {
+    // allowedHosts: ["local.site.peow.id"],
+    host: "127.0.0.1",
+    port: Number(process.env.PORT) || 3000,
+  },
 });
 
 export default config;

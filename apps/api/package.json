@@ -4,8 +4,10 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf node_modules .turbo .dist",
-    "dev": "tsdown ./src/main.ts --watch",
+    "dev:watch": "tsdown ./src/main.ts --watch",
+    "dev": "portless",
     "start": "node dist/main.mjs",
+    "dev:app": "tsdown ./src/main.ts && node dist/main.mjs",
     "build": "tsdown"
   },
   "dependencies": {
@@ -20,5 +22,9 @@
     "tsdown": "^0.22.2",
     "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.34.1"
+  "packageManager": "pnpm@10.34.1",
+  "portless": {
+    "name": "local.api.peow",
+    "script": "dev:app"
+  }
 }

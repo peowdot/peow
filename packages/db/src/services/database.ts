@@ -31,5 +31,5 @@ const makeService = (config: Config) =>
 
 type Shape = Effect.Success<ReturnType<typeof makeService>>;
 
-export class Database extends Context.Service<Database, Shape>()("Databae") {}
+export class Database extends Context.Service<Database, Shape>()("Database") {}
 export const layer = (config: Config) => Layer.effect(Database, makeService(config));

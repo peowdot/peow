@@ -181,8 +181,8 @@ importers:
         specifier: ^28.1.0
         version: 28.1.0
       typescript:
-        specifier: ^6.0.2
-        version: 6.0.3
+        specifier: 'catalog:'
+        version: 5.9.3
       vite:
         specifier: ^8.0.0
         version: 8.0.16(@types/node@22.19.20)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0)
@@ -260,8 +260,8 @@ importers:
         specifier: ^28.1.0
         version: 28.1.0
       typescript:
-        specifier: ^6.0.2
-        version: 6.0.3
+        specifier: 'catalog:'
+        version: 5.9.3
       vite:
         specifier: ^8.0.0
         version: 8.0.16(@types/node@22.19.20)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0)
@@ -3582,11 +3582,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@6.0.3:
-    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   ufo@1.6.4:
     resolution: {integrity: sha512-JFNbkD1Svwe0KvGi8GOeLcP4kAWQ609twvCdcHxq1oSL8svv39ZuSvajcD8B+5D0eL4+s1Is2D/O6KN3qcTeRA==}
 
@@ -6711,8 +6706,6 @@ snapshots:
       tagged-tag: 1.0.0
 
   typescript@5.9.3: {}
-
-  typescript@6.0.3: {}
 
   ufo@1.6.4: {}
 

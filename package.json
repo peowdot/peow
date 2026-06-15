@@ -7,6 +7,7 @@
   "scripts": {
     "clean": "turbo clean && rimraf node_modules .turbo .fallow",
     "dev": "turbo dev",
+    "fmt": "oxfmt .",
     "check": "ultracite check",
     "fix": "ultracite fix",
     "docker:clean": "docker compose down -v",

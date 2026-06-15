@@ -9,10 +9,6 @@ export const users = auth.table("users", {
   firstName: t.text("first_name"),
   lastName: t.text("first_name"),
   email: t.varchar("email", { length: 255 }).unique(),
-  createdAt: t
-    .timestamp("created_at", { precision: 6, withTimezone: true })
-    .notNull(),
-  updatedAt: t
-    .timestamp("updated_at", { precision: 6, withTimezone: true })
-    .notNull(),
+  createdAt: t.timestamp("created_at", { precision: 6, withTimezone: true }).notNull(),
+  updatedAt: t.timestamp("updated_at", { precision: 6, withTimezone: true }).notNull(),
 });

@@ -26,16 +26,12 @@ describe(Database, () => {
     const program = Effect.gen(function* program() {
       const db = yield* Database;
 
-      const result = yield* Effect.tryPromise(() =>
-        db.execute("SELECT 1 as value")
-      );
+      const result = yield* Effect.tryPromise(() => db.execute("SELECT 1 as value"));
 
       return result;
     });
 
-    const result = await Effect.runPromise(
-      program.pipe(Effect.provide(getLayer()), Effect.scoped)
-    );
+    const result = await Effect.runPromise(program.pipe(Effect.provide(getLayer()), Effect.scoped));
 
     expect(result).toBeDefined();
   });
@@ -61,17 +57,13 @@ describe(Database, () => {
       );
 
       const rows = yield* Effect.tryPromise(() =>
-        db.execute(
-          `SELECT * FROM test_messages WHERE content = 'hello from test'`
-        )
+        db.execute(`SELECT * FROM test_messages WHERE content = 'hello from test'`)
       );
 
       return rows;
     });
 
-    const rows = await Effect.runPromise(
-      program.pipe(Effect.provide(getLayer()), Effect.scoped)
-    );
+    const rows = await Effect.runPromise(program.pipe(Effect.provide(getLayer()), Effect.scoped));
 
     expect(rows).toHaveLength(1);
   });

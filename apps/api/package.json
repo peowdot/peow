@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "clean": "rimraf node_modules .turbo .dist",
+    "clean": "rimraf node_modules .turbo dist",
     "dev:watch": "tsdown ./src/main.ts --watch",
     "dev": "portless",
     "start": "node dist/main.mjs",

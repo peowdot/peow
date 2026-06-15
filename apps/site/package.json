@@ -6,7 +6,7 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "clean": "rimraf node_modules .wrangler .tanstack .turbo",
+    "clean": "rimraf node_modules .wrangler dist .tanstack .turbo",
     "dev": "portless",
     "dev:app": "vite dev",
     "generate-routes": "tsr generate",

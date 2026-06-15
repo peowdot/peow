@@ -19,7 +19,13 @@ catalogs:
       specifier: 4.4.3
       version: 4.4.3
   orpc:
+    '@orpc/client':
+      specifier: 1.14.5
+      version: 1.14.5
     '@orpc/server':
+      specifier: 1.14.5
+      version: 1.14.5
+    '@orpc/tanstack-query':
       specifier: 1.14.5
       version: 1.14.5
 
@@ -92,10 +98,10 @@ importers:
   apps/app:
     dependencies:
       '@orpc/client':
-        specifier: ^1.14.5
+        specifier: catalog:orpc
         version: 1.14.5
       '@orpc/tanstack-query':
-        specifier: ^1.14.5
+        specifier: catalog:orpc
         version: 1.14.5(@orpc/client@1.14.5)(@tanstack/query-core@5.101.0)
       '@repo/rpc':
         specifier: workspace:*

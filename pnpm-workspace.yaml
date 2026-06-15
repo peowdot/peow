@@ -18,3 +18,5 @@ catalog:
 catalogs:
   orpc:
     "@orpc/server": 1.14.5
+    "@orpc/client": 1.14.5
+    "@orpc/tanstack-query": 1.14.5

@@ -4,24 +4,30 @@ packages:
   - "tooling/*"
 
 allowBuilds:
+  cpu-features: true
   esbuild: true
   lefthook: true
+  msgpackr-extract: true
+  protobufjs: true
   sharp: true
+  ssh2: true
   workerd: true
 
 catalog:
+  "@types/node": ^24.13.1
   "server-only": 0.0.1
-  "@types/node": ^24.12.4
   typescript: ^5.9.3
   zod: 4.4.3
 
 catalogs:
+  effect:
+    effect: 4.0.0-beta.83
   orpc:
-    "@orpc/server": 1.14.5
     "@orpc/client": 1.14.5
+    "@orpc/server": 1.14.5
     "@orpc/tanstack-query": 1.14.5
   react:
-    react: 19.2.0
-    "react-dom": 19.2.0
     "@types/react": 19.2.0
     "@types/react-dom": 19.2.0
+    react: 19.2.0
+    "react-dom": 19.2.0

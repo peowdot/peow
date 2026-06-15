@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "main": "src/index.ts",
+  "imports": {
+    "#env": "./env.ts"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./schema": "./src/schema/index.ts"
@@ -25,6 +28,7 @@
   },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
+    "@t3-oss/env-core": "catalog:",
     "@testcontainers/postgresql": "^12.0.2",
     "@types/node": "catalog:",
     "drizzle-kit": "^0.31.10",

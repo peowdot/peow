@@ -1,10 +1,11 @@
 import { defineConfig } from "drizzle-kit";
 
+import { env } from "#env";
+
 export default defineConfig({
   casing: "snake_case",
   dbCredentials: {
-    // oxlint-disable-next-line typescript/no-non-null-assertion
-    url: process.env.DATABASE_URL!,
+    url: env.DATABASE_URL,
   },
   dialect: "postgresql",
   out: "./drizzle",

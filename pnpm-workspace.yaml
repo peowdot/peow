@@ -16,6 +16,7 @@ allowBuilds:
 catalog:
   "@types/node": ^24.13.1
   "server-only": 0.0.1
+  "@t3-oss/env-core": ^0.13.11
   typescript: ^5.9.3
   zod: 4.4.3
 

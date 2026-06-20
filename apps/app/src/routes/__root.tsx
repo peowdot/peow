@@ -1,5 +1,5 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import { Outlet, createRootRoute } from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import "../styles.css";
@@ -7,12 +7,20 @@ import { Providers } from "@/providers";
 
 export const Route = createRootRoute({
   component: RootComponent,
+  head: () => ({
+    meta: [
+      {
+        title: "Peow",
+      },
+    ],
+  }),
 });
 
 function RootComponent() {
   return (
     <>
       <Providers>
+        <HeadContent />
         <Outlet />
         <TanStackDevtools
           config={{

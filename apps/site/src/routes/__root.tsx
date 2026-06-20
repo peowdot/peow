@@ -2,6 +2,8 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
+import { Providers } from "../providers";
+
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -11,6 +13,7 @@ export const Route = createRootRoute({
         href: appCss,
         rel: "stylesheet",
       },
+      { href: "/favicon.ico", rel: "icon" },
     ],
     meta: [
       {
@@ -21,7 +24,7 @@ export const Route = createRootRoute({
         name: "viewport",
       },
       {
-        title: "TanStack Start Starter",
+        title: "Peow",
       },
     ],
   }),
@@ -35,7 +38,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <Providers>{children}</Providers>
         <TanStackDevtools
           config={{
             position: "bottom-right",

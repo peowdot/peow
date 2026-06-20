@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Hedving Letters Sans";
+  src: url("./hedving-letters/HedvigLettersSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hedving Letters Serif";
+  src: url("./hedving-letters/HedvigLettersSerif-Regular[opsz].woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

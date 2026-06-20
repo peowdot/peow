@@ -9,6 +9,8 @@ import { evlog } from "@repo/telemetry/evlog/fastify";
 import Fastify from "fastify";
 import type { FastifyRequest } from "fastify";
 
+import { env } from "#env";
+
 const createRequestContext = (req: FastifyRequest) => {
   const headers = new Headers(req.headers as Record<string, string>);
 
@@ -83,6 +85,6 @@ const main = async () => {
 const app = await main();
 
 app
-  .listen({ port: Number(process.env.PORT) })
+  .listen({ port: env.PORT })
   // oxlint-disable-next-line promise/prefer-await-to-then
   .then(() => console.log(`Server running on https://local.api.peow.id`));

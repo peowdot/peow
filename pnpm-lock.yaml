@@ -110,9 +110,15 @@ importers:
       '@repo/telemetry':
         specifier: workspace:*
         version: link:../../packages/telemetry
+      '@t3-oss/env-core':
+        specifier: 'catalog:'
+        version: 0.13.11(typescript@5.9.3)(zod@4.4.3)
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
+      zod:
+        specifier: 'catalog:'
+        version: 4.4.3
     devDependencies:
       '@repo/tsconfig':
         specifier: workspace:*

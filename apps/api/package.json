@@ -2,6 +2,9 @@
   "name": "api",
   "private": true,
   "type": "module",
+  "imports": {
+    "#env": "./env.ts"
+  },
   "scripts": {
     "clean": "rimraf node_modules .turbo dist",
     "dev:watch": "tsdown ./src/main.ts --watch",
@@ -16,7 +19,9 @@
     "@orpc/server": "catalog:orpc",
     "@repo/rpc": "workspace:*",
     "@repo/telemetry": "workspace:*",
-    "fastify": "^5.8.5"
+    "@t3-oss/env-core": "catalog:",
+    "fastify": "^5.8.5",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
